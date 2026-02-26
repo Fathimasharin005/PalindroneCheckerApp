@@ -1,29 +1,63 @@
-import java.util.Scanner;
+/**
+ * ------------------------------------------------------------
+ * MAIN CLASS - UseCase4PalindromeCheckerApp
+ * ------------------------------------------------------------
+ *
+ * Use Case 4: Character Array Based Validation
+ *
+ * Description:
+ * This class validates a palindrome by converting
+ * the string into a character array and comparing
+ * characters using the two-pointer technique.
+ *
+ * At this stage, the application:
+ * - Converts string to char array
+ * - Uses start and end pointers
+ * - Compares characters efficiently
+ * - Displays the result
+ *
+ * This reduces extra memory usage.
+ *
+ * @author Developer
+ * @version 4.0
+ */
+
 public class PalindroneChecker {
 
+    /**
+     * Application entry point for UC4.
+     *
+     * @param args Command-line arguments
+     */
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        // Declare and initialize the input string.
+        String input = "radar";
 
-        System.out.print("Enter a string to check if it is a palindrome: ");
-        String original = scanner.nextLine();
+        // Convert the string into a character array.
+        char[] chars = input.toCharArray();
 
-        String reversed = "";
+        // Initialize pointer at the beginning.
+        int start = 0;
 
-        // Iterate the string in reverse order
-        for (int i = original.length() - 1; i >= 0; i--) {
-            reversed += original.charAt(i);
+        // Initialize pointer at the end.
+        int end = chars.length - 1;
+
+        // Assume palindrome initially.
+        boolean isPalindrome = true;
+
+        // Continue comparison until pointers cross.
+        while (start < end) {
+            if (chars[start] != chars[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
         }
 
-        // Compare original and reversed strings
-        if (original.equalsIgnoreCase(reversed)) {
-            System.out.println("Result: \"" + original + "\" is a palindrome.");
-        } else {
-            System.out.println("Result: \"" + original + "\" is NOT a palindrome.");
-        }
-
-        scanner.close();
-
+        // Display result
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
-
